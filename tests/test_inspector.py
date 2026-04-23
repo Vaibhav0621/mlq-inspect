@@ -37,7 +37,7 @@ def lr_model_with_names():
 def test_extract_metadata_rf(rf_model_with_names):
     """Test extracting metadata from RandomForest."""
     meta = extract_metadata(rf_model_with_names)
-    
+
     assert meta["class_name"] == "RandomForestClassifier"
     assert meta["n_features"] == 10
     assert meta["n_classes"] == 2
@@ -49,7 +49,7 @@ def test_extract_metadata_rf(rf_model_with_names):
 def test_extract_metadata_lr(lr_model_with_names):
     """Test extracting metadata from LogisticRegression."""
     meta = extract_metadata(lr_model_with_names)
-    
+
     assert meta["class_name"] == "LogisticRegression"
     assert meta["n_features"] == 8
     assert meta["n_classes"] == 2
@@ -60,7 +60,7 @@ def test_extract_metadata_lr(lr_model_with_names):
 def test_get_feature_names_with_names(rf_model_with_names):
     """Test extracting feature names from model."""
     names = get_feature_names(rf_model_with_names)
-    
+
     # Should have feature names since trained with DataFrame
     assert names is not None
     assert len(names) == 10
@@ -81,6 +81,6 @@ def test_detect_estimator_type():
     """Test estimator type detection."""
     rf = RandomForestClassifier()
     assert detect_estimator_type(rf) == "tree"
-    
+
     lr = LogisticRegression()
     assert detect_estimator_type(lr) == "linear"
